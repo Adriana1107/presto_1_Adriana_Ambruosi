@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Article;
+use App\Models\Category;
+use Illuminate\Routing\Controller;
+
+class ArticleController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create');
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        return view('article.create', compact('categories'));
+    }
+
+     public function index()
+    {
+       
+        $articles = Article::with(['category', 'user'])->latest()->paginate(10); 
+
+        return view('article.index', compact('articles'));
+    }
+    public function show(Article $article)
+    {
+    
+        $article->load(['category', 'user']);
+
+        return view('article.show', compact('article'));
+    }
+
+}
+
