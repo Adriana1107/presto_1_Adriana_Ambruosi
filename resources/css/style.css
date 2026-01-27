@@ -1,3 +1,9 @@
 .height-custom{
     min-height: 60vh;
 }
+
+body {
+    background-color: #f5f5f5;
+    color: #212529;          
+    font-family: 'Segoe UI', sans-serif;
+}

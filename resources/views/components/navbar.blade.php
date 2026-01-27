@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
+<nav class="navbar navbar-expand-lg bg-dark bg-opacity-75 shadow">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('homepage') }}">Game</a>
 
@@ -17,6 +17,21 @@
         <li class="nav-item">
                     <a class="nav-link" href="{{ route('articles.index') }}">Guide</a>
                 </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Categorie
+          </a>
+          <ul class="dropdown-menu">
+            @foreach ($categories as $category)
+              <li><a class="dropdown-item text-capitalize" href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->title }}</a>
+              </li>
+              @if(!$loop->last)
+              <hr class="dropdown-divider">
+              @endif            
+            @endforeach
+          </ul>
+          </li>
 
         @auth
         <li class="nav-item dropdown">
