@@ -1,6 +1,6 @@
 <x-layout>
     <div class="container bg-body-tertiary shadow rounded p-5 my-5">
-        <h1 class="mb-4">LISTA GUIDE AI VIDEOGAMES</h1>
+        <h1 class="mb-4 text-white">LISTA GUIDE AI VIDEOGAMES</h1>
 
         @if($articles->count() > 0)
             <div class="row">

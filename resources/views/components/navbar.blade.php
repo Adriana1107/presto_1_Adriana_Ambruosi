@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-dark bg-opacity-75 shadow">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 shadow">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('homepage') }}">Game</a>
 
