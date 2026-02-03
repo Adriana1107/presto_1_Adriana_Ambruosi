@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 shadow">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{{ route('homepage') }}">Game</a>
+    <a class="navbar-brand" href="{{ route('homepage') }}"><i class="fa-solid fa-gamepad"></i></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -34,6 +34,16 @@
           </li>
 
         @auth
+
+          @if(Auth::user()->is_revisor)
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
+              href="{{ route('revisor.index') }}">zona revisore <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::ToBeRevisedCount() }}</span>
+              </a>
+            </li>
+          @endif
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,6 +91,7 @@
           </ul>
         </li>
         @endauth
+
 
       </ul>
     </div>

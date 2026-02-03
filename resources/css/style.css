@@ -3,9 +3,18 @@
 }
 
 body {
-    color: #212529;          
+    color: #212529;    
+    height: 100vh;      
    
     
+}
+
+.img{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("images/imageBG2.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;                
+    height: 100vh;
 }
 
 

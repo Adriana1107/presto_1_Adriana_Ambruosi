@@ -22,9 +22,12 @@ class ArticleController extends Controller
      public function index()
     {
        
-        $articles = Article::with(['category', 'user'])->latest()->paginate(10); 
+       $articles = Article::where('is_accepted', true)
+                   ->with(['category', 'user'])
+                   ->orderBy('created_at', 'desc')
+                   ->paginate(10); 
 
-        return view('article.index', compact('articles'));
+        return view('articls.index', compact('articles'));
     }
     public function show(Article $article)
     {
@@ -36,7 +39,8 @@ class ArticleController extends Controller
 
     public function byCategory(Category $category)
     {
-        return view('article.byCategory', ['articles' => $category->articles, 'category' => $category]);
+        $articles = $category->articles->where('is_accepted', true);
+        return view('article.byCategory', compact('articles', 'category'));
     }
 
 }

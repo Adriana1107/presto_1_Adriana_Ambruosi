@@ -1,9 +1,7 @@
 <x-layout>
-   
-
-        <div class="container py-5 position">
+        <div class="container-fluid img">
             <div class="row justify-content-center align-items-center">
-                <div class="col-12 col-md-4 text-white">
+                <div class="col-12 col-md-4 text-white mt-5">
                     <h1 class="mb-3">{{ $article->title }}</h1>
     
                     <div class="me-5">
@@ -14,10 +12,10 @@
                         </div>
                 
                         <div class="mb-4">
-                            <h5>Recensione</h5>
+                            <h3>Recensione</h5>
                             <p>{{ $article->review }}</p>
                         </div>
-                         <p class="text-muted">
+                         <p class="text-white">
                             Categoria: {{ $article->category->title }} <br>
                             Autore: {{ $article->user->name ?? 'Sconosciuto' }} <br>
                             Pubblicato il: {{ $article->created_at->format('d/m/Y') }}

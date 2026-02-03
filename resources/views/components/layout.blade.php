@@ -19,6 +19,6 @@
   
       {{ $slot }}
   
-    
+    <script src="https://kit.fontawesome.com/44c507059e.js" crossorigin="anonymous"></script>
 </body>
 </html>

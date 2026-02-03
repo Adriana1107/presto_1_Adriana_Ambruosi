@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="container bg-body-tertiary shadow rounded p-5 my-5">
-        <h1 class="mb-4 text-white">LISTA GUIDE AI VIDEOGAMES</h1>
+    <div class="container-fluid img">
+        <h1 class="text-center text-white">LISTA GUIDE AI VIDEOGAMES</h1>
 
         @if($articles->count() > 0)
             <div class="row">
@@ -13,8 +13,8 @@
 
             {{ $articles->links() }}
         @else
-        <div class="col-12">
-            <p class="text-center">Nessun articolo trovato.</p>
+        <div class="col-12 mt-5">
+            <p class="text-center text-white">Nessun articolo trovato.</p>
             
         </div>
         @endif
