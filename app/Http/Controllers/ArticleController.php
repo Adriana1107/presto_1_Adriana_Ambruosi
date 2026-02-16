@@ -27,7 +27,7 @@ class ArticleController extends Controller
                    ->orderBy('created_at', 'desc')
                    ->paginate(10); 
 
-        return view('articls.index', compact('articles'));
+        return view('article.index', compact('articles'));
     }
     public function show(Article $article)
     {

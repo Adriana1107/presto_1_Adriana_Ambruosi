@@ -15,16 +15,17 @@
           <a class="nav-link active" href="{{ route('homepage') }}">Home</a>
         </li>
         <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.index') }}">Guide</a>
+                    <a class="nav-link" href="{{ route('articles.index') }}">{{ __('ui.guides') }}</a>
                 </li>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
-            Categorie
+            {{ __('ui.categories') }}
           </a>
           <ul class="dropdown-menu">
             @foreach ($categories as $category)
-              <li><a class="dropdown-item text-capitalize" href="{{ route('byCategory', ['category' => $category]) }}">{{ $category->title }}</a>
+              <li><a class="dropdown-item text-capitalize" href="{{ route('byCategory', ['category' => $category]) }}">{{__("ui.$category->title")}}
+</a>
               </li>
               @if(!$loop->last)
               <hr class="dropdown-divider">
@@ -38,7 +39,7 @@
           @if(Auth::user()->is_revisor)
             <li class="nav-item">
               <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
-              href="{{ route('revisor.index') }}">zona revisore <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::ToBeRevisedCount() }}</span>
+              href="{{ route('revisor.index') }}">{{ __('ui.reviewer_zone') }} <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::ToBeRevisedCount() }}</span>
               </a>
             </li>
           @endif
@@ -47,7 +48,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
-            Salve, {{ Auth::user()->name }}
+           {{ __('ui.hello') }}{{ Auth::user()->name }}
           </a>
 
           <ul class="dropdown-menu">
@@ -82,11 +83,11 @@
 
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" href="{{ route('login') }}">Accedi</a>
+              <a class="dropdown-item" href="{{ route('login') }}">{{ __('ui.login') }}</a>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li>
-              <a class="dropdown-item" href="{{ route('register') }}">Registrati</a>
+              <a class="dropdown-item" href="{{ route('register') }}">{{ __('ui.register') }}</a>
             </li>
           </ul>
         </li>
@@ -98,7 +99,10 @@
             <button type="submit" class="input-group-text btn btn-outline-success" id="basic-addon2"> </button>
           </div>
         </form>
-
+  
+       <x-_locale lang="it"/>
+       <x-_locale lang="en"/>
+       <x-_locale lang="fr"/>
 
       </ul>
     </div>

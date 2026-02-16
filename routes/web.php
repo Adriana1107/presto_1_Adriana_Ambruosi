@@ -17,3 +17,4 @@ Route::patch('/reject/{article}', [RevisorController::class, 'reject'])->name('r
 Route::get('revisor/request', [RevisorController::class, 'becomeRevisor'])->name('become.revisor')->middleware('auth');
 Route::get('/make/revisor/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
 Route::get('/search/article', [PublicController::class, 'searchArticles'])->name('article.search');
+Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');
