@@ -10,6 +10,12 @@
             </div>
         </div>
         @if ($article_to_check)
+        @foreach ($article_to_check->images as $key=> $image )
+        <div class="col-6 col-md-4 mb-4">
+            <img src="{{ Storage::url($image->path) }}" class="rounded shadow img-fluid" alt="immagine {{ $key +1 }} dell'articolo '{{ $article_to_check->title }}'">
+        </div>
+        
+        @endforeach
             <div class="row justify-content-center pt-5">
                 <div class="col-md-8">
                     <div class="row justify-content-center">

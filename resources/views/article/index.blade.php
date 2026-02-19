@@ -1,6 +1,9 @@
 <x-layout>
     <div class="container-fluid img">
-        <h1 class="text-center text-white">LISTA GUIDE AI VIDEOGAMES</h1>
+        <div class="row">
+
+        
+        <h1 class="text-center mt-5 text-white">LISTA GUIDE AI VIDEOGAMES</h1>
 
         @if($articles->count() > 0)
             <div class="row">
@@ -18,5 +21,6 @@
             
         </div>
         @endif
+        </div>
     </div>
 </x-layout>
