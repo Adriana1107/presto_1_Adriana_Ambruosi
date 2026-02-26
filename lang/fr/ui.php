@@ -1,0 +1,26 @@
+<?php
+return [
+    'hello' => 'Salut',
+    'allArticles' => 'Tous les Articles',
+    'home' => 'Accueil',
+    'guides' => 'Guides',
+    'categories' => 'Catégories',
+    'login' => 'Connexion',
+    'register' => 'S’inscrire',
+    'logout' => 'Déconnexion',
+    'reviewer_zone' => 'Zone réviseur',
+    'create' => 'Créer',
+    'search' => 'Rechercher',
+    'Horror' => 'Horreur',
+    'Racing' => 'Course',
+    'picchiaduro' => 'Combat',
+    'Simulazione' => 'Simulation',
+    'Open World' => 'Monde ouvert',
+    'TPS/FPS' => 'TPS/FPS',
+    'Multiplayer/Online' => 'Multijoueur/En ligne',
+    'Indie' => 'Indie',
+    'Narrativo' => 'Narratif',
+    'RPG' => 'Jeux de rôle',
+    'Action' => 'Action',
+
+];
