@@ -1,7 +1,11 @@
 
  <div class="col-md-12 mb-4">
       <div class="card text-center bg-dark bg-opacity-75 shadow rounded p-5 my-5 text-white">
-        <img src="{{ $article->images->isNotEmpty() ? $article->images->first()->geturl(300, 300) : 'https://picsum.photos/200' }}" class="card-img-top" alt="immagine di {{ $article->title }}">
+       <img src="{{ $article->images->isNotEmpty() 
+               ? Storage::url($article->images->first()->path) 
+               : 'https://picsum.photos/200' }}" 
+               class="card-img-top" 
+               alt="immagine di {{ $article->title }}">
         <div class="card-body">
                  <h5 class="card-title">{{ $article->title }}</h5>
                 <p class="card-text">{{ \Illuminate\Support\Str::limit($article->review, 150) }}</p>
