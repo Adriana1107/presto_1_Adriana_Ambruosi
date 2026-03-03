@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Middleware\IsRevisor;
+use App\Http\Middleware\SetLocaleMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\isRevisor;
-use App\Http\Middleware\SetLocaleMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -14,7 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
             $middleware->alias([
-                'isRevisor' => isRevisor::class
+                'isRevisor' => IsRevisor::class
             ]);
     })
 
@@ -22,7 +22,7 @@ return Application::configure(basePath: dirname(__DIR__))
      ->withMiddleware(function (Middleware $middleware): void {
         $middleware->web(append: [SetLocaleMiddleware::class]);
         $middleware->alias([
-            'isRevisor' => isRevisor::class
+            'isRevisor' => IsRevisor::class
         ]);
      })
 

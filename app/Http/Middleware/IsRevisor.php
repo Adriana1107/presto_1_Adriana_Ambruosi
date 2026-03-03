@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class IsRevisor
+class isRevisor
 {
    
     public function handle(Request $request, Closure $next): Response
