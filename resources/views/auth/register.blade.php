@@ -1,9 +1,9 @@
 <x-layout>
-  <div class="container pt-5">
+  <div class="container-fluid img">
 
     <div class="row justify-content-center">
       <div class="col-12 text-center">
-        <h1 class="display-4 pt-5">Registrati</h1>
+        <h1 class="display-4 pt-5 mb-3 text-white">Registrati</h1>
       </div>
     </div>
 

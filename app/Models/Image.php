@@ -13,8 +13,15 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
-        'path'
-    ];
+    'path',
+    'adult',
+    'spoof',
+    'violence',
+    'racy',
+    'medical',
+    'labels'
+];
+
     public function article() : BelongsTo{
         return $this->belongsTo(Article::class);
     }
@@ -38,4 +45,7 @@ class Image extends Model
             'labels' => 'array',
         ];
     }
+
+
+
 }

@@ -15,6 +15,20 @@
                 </p>
                <a href="{{ route('articles.show', $article) }}" class="btn btn-dark">Leggi di più</a>
                <a href="{{ route('byCategory', ['category' => $article->category]) }}" class="btn btn-outline-info mt-1">{{ $article->category->title }}</a>
+
+             @auth
+                    @if(auth()->id() === $article->user_id)
+                        <form class="mt-2" action="{{ route('articles.destroy', $article) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+
+                            <button type="submit" class="btn btn-danger"
+                                onclick="return confirm('Sei sicuro di voler eliminare questo articolo?')">
+                                <i class="fa-solid fa-trash-can me-1"></i> Elimina
+                            </button>
+                        </form>
+                    @endif
+                @endauth
           </div>
      </div>
 </div>

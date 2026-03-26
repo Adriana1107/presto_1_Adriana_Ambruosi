@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only('create');
+        $this->middleware('auth')->only('create', 'destroy');
     }
 
     public function create()
@@ -43,5 +43,12 @@ class ArticleController extends Controller
         return view('article.byCategory', compact('articles', 'category'));
     }
 
+    public function destroy(Article $article)
+    {
+        $article->delete();
+
+        return redirect()->route('articles.index')
+                        ->with('success', 'Articolo eliminato con successo!');
+    }
 }
 

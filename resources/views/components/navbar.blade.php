@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 shadow">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ route('homepage') }}"><i class="fa-solid fa-gamepad"></i></a>
@@ -36,7 +37,7 @@
 
         @auth
 
-          @if(Auth::user()->is_revisor)
+          @if(auth()->user()->is_revisor)
             <li class="nav-item">
               <a class="nav-link btn btn-outline-success btn-sm position-relative w-sm-25"
               href="{{ route('revisor.index') }}">{{ __('ui.reviewer_zone') }} <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{ \App\Models\Article::ToBeRevisedCount() }}</span>
@@ -48,7 +49,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button"
              data-bs-toggle="dropdown" aria-expanded="false">
-           {{ __('ui.hello') }}{{ Auth::user()->name }}
+           {{ __('ui.hello') }} {{ auth()->user()->name }}
           </a>
 
           <ul class="dropdown-menu">

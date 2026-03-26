@@ -100,7 +100,7 @@ class CreateArticleForm extends Component
         $this->description = '';
         $this->review = '';
         $this->category_id = '';
-        $this->images = '';
+        $this->images = [];
 
     }
 

@@ -50,7 +50,7 @@
                 
                         <a href="{{ route('articles.index') }}" class="btn btn-secondary">Torna alla lista articoli</a>
                     </div>
-            
+              
     
                 </div>
     

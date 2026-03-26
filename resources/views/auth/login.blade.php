@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container mt-5">
+    <div class="container-fluid img">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
-                <h1 class="display-4 pt-5">Accedi</h1>
+                <h1 class="display-4 text-white pt-5">Accedi</h1>
             </div>
         </div>
         <div class="row justify-content-center align-items-center height-custom">
