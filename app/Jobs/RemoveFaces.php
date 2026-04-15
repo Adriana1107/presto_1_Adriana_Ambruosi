@@ -3,7 +3,10 @@
 namespace App\Jobs;
 
 use App\Models\Image;
-use Google\Cloud\Vision\V1\ImageAnnotatorClient;
+use Google\Cloud\Vision\V1\Client\ImageAnnotatorClient;
+use Google\Cloud\Vision\V1\Image as VisionImage;
+use Google\Cloud\Vision\V1\Feature;
+use Google\Cloud\Vision\V1\AnnotateImageRequest;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
@@ -12,6 +15,7 @@ use Illuminate\Queue\SerializesModels;
 use Spatie\Image\Enums\AlignPosition;
 use Spatie\Image\Enums\Fit;
 use Spatie\Image\Image as SpatieImage;
+use Google\Cloud\Vision\V1\BatchAnnotateImagesRequest;
 
 class RemoveFaces implements ShouldQueue
 {
@@ -34,16 +38,30 @@ class RemoveFaces implements ShouldQueue
 
         $srcPath = storage_path('app/public/' . $i->path);
 
-        $image = file_get_contents($srcPath);
+        $imageContent = file_get_contents($srcPath);
 
-       
         putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credential.json'));
 
         $imageAnnotator = new ImageAnnotatorClient();
 
-        $response = $imageAnnotator->faceDetection($image);
-        $faces = $response->getFaceAnnotations();
+        $image = new VisionImage();
+        $image->setContent($imageContent);
 
+        $feature = new Feature();
+        $feature->setType(Feature\Type::FACE_DETECTION);
+
+        $request = new AnnotateImageRequest();
+        $request->setImage($image);
+        $request->setFeatures([$feature]);
+
+        $batchRequest = new BatchAnnotateImagesRequest();
+        $batchRequest->setRequests([$request]);
+
+        $response = $imageAnnotator->batchAnnotateImages($batchRequest);
+
+        $faces = $response->getResponses()[0]->getFaceAnnotations();
+
+        $spatieImage = SpatieImage::load($srcPath);
 
         foreach ($faces as $face) {
 
@@ -55,14 +73,11 @@ class RemoveFaces implements ShouldQueue
                 $bounds[] = [$vertex->getX(), $vertex->getY()];
             }
 
-
             $w = $bounds[2][0] - $bounds[0][0];
             $h = $bounds[2][1] - $bounds[0][1];
 
-            $image = SpatieImage::load($srcPath);
-
-            $image->watermark(
-                base_path('resources/img/smile.png'),
+            $spatieImage->watermark(
+                public_path('images/smile.png'),
                 AlignPosition::TopLeft,
                 paddingX: $bounds[0][0],
                 paddingY: $bounds[0][1],
@@ -70,9 +85,10 @@ class RemoveFaces implements ShouldQueue
                 height: $h,
                 fit: Fit::Stretch
             );
+
+           
+            $spatieImage->save($srcPath);
         }
-        
-        $image->save($srcPath);
 
         $imageAnnotator->close();
     }

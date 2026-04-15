@@ -3,13 +3,13 @@
 namespace App\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Queue\Queueable;
-use Spatie\Image\Enums\CropPosition;
-use Spatie\Image\Enums\Unit;
-use Spatie\Image\Image;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Spatie\Image\Enums\AlignPosition;
+use Spatie\Image\Enums\CropPosition;
+use Spatie\Image\Image;
 
 class ResizeImage implements ShouldQueue
 {
@@ -37,15 +37,15 @@ class ResizeImage implements ShouldQueue
         $destPath = storage_path('app/public/' . $this->path . "/crop_{$w}x{$h}_" . $this->fileName);
 
         Image::load($srcPath)
-            ->crop($w, $h, CropPosition::Center)
-            ->watermark(
-                base_path('public/images/watermark.png'),
-                width: 50,
-                height: 50,
-                paddingX: 5,
-                paddingY: 5,
-                paddingUnit: Unit::Percent
-            )
-            ->save($destPath);
-    }
+        ->crop($w, $h, CropPosition::Center)
+        ->watermark(
+            public_path('images/watermark.png'),
+            AlignPosition::BottomRight,
+            paddingX: 10,
+            paddingY: 10,
+            width: 60,
+            height: 60
+        )
+        ->save($destPath);
+        }
 }
