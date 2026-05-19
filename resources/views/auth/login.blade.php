@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container-fluid img">
+    <div class="container-fluid img vh-100">
         <div class="row justify-content-center">
             <div class="col-12 text-center">
                 <h1 class="display-4 text-white pt-5">Accedi</h1>

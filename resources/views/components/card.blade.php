@@ -1,6 +1,6 @@
 
- <div class="col-md-12 mb-4">
-      <div class="card text-center bg-dark bg-opacity-75 shadow rounded p-5 my-5 text-white">
+ <div class="col-12 col-mb-4" style="width: 300px;">
+      <div class="card text-center bg-secondary shadow rounded text-white">
        <img src="{{ $article->images->isNotEmpty() 
                ? Storage::url($article->images->first()->path) 
                : 'https://picsum.photos/200' }}" 

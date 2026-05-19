@@ -1,14 +1,14 @@
 <x-layout>
     <div class="container-fluid img">
-        <div class="row">
+        <div class="row mb-5">
 
         
-        <h1 class="text-center mt-5 text-white">LISTA GUIDE AI VIDEOGAMES</h1>
+        <h1 class="text-center display-4 fw-bold mt-5 text-white">LISTA GUIDE AI VIDEOGAMES</h1>
 
         @if($articles->count() > 0)
-            <div class="row">
+            <div class="row g-4 justify-content-center">
                 @foreach($articles as $article)
-                 <div class="col-12 col-md-3">
+                 <div class="col-12 col-sm-6 col-lg-4 col-xl-3 d-flex justify-content-center">
                      <x-card :article="$article"/>
                  </div>
                 @endforeach
